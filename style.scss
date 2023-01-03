@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+@mixin responda($breakpoint) {
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 90em) {
+      // 1440 px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 78.75em) {
+      //1260px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 65.625em) {
+      //1050px
+      @content;
+    }
+  }
+
+  @if $breakpoint == cel-land {
+    @media only screen and (max-width: 52.25em) {
+      //836px
+      @content;
+    }
+  }
+
+  @if $breakpoint == cel-port {
+    @media only screen and (max-width: 38.75em) {
+      //620px
+      @content;
+    }
+  }
+}
+
+html {
+  font-size: 62.5%;
+
+  @include responda(tab-land) {
+    font-size: 50%;
+  }
+
+  @include responda(cel-land) {
+    font-size: 35%;
+  }
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.8rem;
+}
+
+.header {
+  max-width: 144rem;
+  margin: 5rem auto 10rem;
+
+  @include responda(desktop) {
+    margin: 5rem 5rem 10rem;
+  }
+
+  &__logo {
+    @include responda(cel-port) {
+      width: 50%;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15rem;
+  }
+
+  &__button {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.8rem;
+    border: 0.1rem solid hsl(322, 100%, 66%);
+    color: hsl(322, 100%, 66%);
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50rem;
+    padding: 0.5rem 3rem;
+    cursor: pointer;
+    transition: all 0.5s ease-in;
+
+    &:hover {
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+      text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    }
+
+    &_filled {
+      font-weight: bold;
+      padding: 2rem 9rem;
+      border: 0;
+      background-color: hsl(322, 100%, 66%);
+      color: white;
+    }
+
+    &_filled:hover {
+      background-color: hsl(322, 67%, 53%);
+    }
+  }
+
+  &__cta {
+    max-width: 110rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+
+    &_title {
+      font-size: 5.2rem;
+      text-align: center;
+      margin: 0;
+
+      @include responda(cel-port) {
+        font-size: 3rem;
+      }
+    }
+
+    &_text {
+      max-width: 70rem;
+      font-family: "Open Sans", sans-serif;
+      text-align: center;
+      font-weight: 400;
+      font-size: 2.2rem;
+    }
+  }
+}
+
+.feature {
+  margin-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include responda(cel-port) {
+    margin: 0 5rem 10rem;
+  }
+
+  &__data {
+    margin-top: 7rem;
+    width: 90rem;
+    display: flex;
+    justify-content: space-between;
+
+    @include responda(cel-land) {
+      max-width: 80%;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-size: 10rem;
+    margin: 0;
+
+    @include responda(cel-land) {
+      font-size: 5rem;
+    }
+  }
+
+  &__img {
+    margin: auto;
+
+    @include responda(tab-port) {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    font-family: "Open Sans", sans-serif;
+    color: grey;
+  }
+}
+
+.top_color {
+  width: 100%;
+  margin: 0;
+  line-height: 0.1;
+}
+
+.grow {
+  &__content {
+    margin-top: -3rem;
+    background-color: hsl(207, 100%, 98%);
+    padding: 5rem 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include responda(cel-port) {
+      flex-direction: column-reverse;
+      gap: 5rem;
+    }
+  }
+
+  &__text-box {
+    flex-basis: 45%;
+    text-align: center;
+  }
+
+  &__img-box {
+    flex-basis: 45%;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__text {
+    font-family: "Open Sans", sans-serif;
+  }
+
+  &__title {
+    font-size: 5rem;
+    @include responda(cel-land) {
+      font-size: 3rem;
+    }
+  }
+}
+
+.back_white {
+  background-color: white;
+  @include responda(cel-port) {
+    flex-direction: column;
+  }
+}
+
+.margin_top_bot {
+  margin: 7rem 0;
+}
+
+.cta2 {
+  margin: 15rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7rem;
+}
+
+.footer {
+  &__img-top {
+    width: 100%;
+  }
+
+  &__content {
+    padding: 8rem;
+    margin-top: -1rem;
+    background-color: hsl(192, 100%, 9%);
+    color: white;
+    display: flex;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    justify-content: space-between;
+
+    @include responda(cel-land) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__logo {
+    width: 20rem;
+  }
+
+  &__site-dados {
+    flex-basis: 30rem;
+
+    @include responda(cel-land) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+  }
+
+  &__text {
+    @include responda(cel-land) {
+      max-width: 70%;
+      text-align: center;
+    }
+  }
+
+  &__phone,
+  &__email {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__icon {
+    font-size: 3rem;
+  }
+
+  &__input {
+    width: 70%;
+    height: 85%;
+    margin-right: 2rem;
+    border-radius: 1rem;
+  }
+
+  @include responda(tab-land) {
+    &__form {
+      display: flex;
+    }
+  }
+}
+
+.newsletter {
+  flex-basis: 70rem;
+  @include responda(cel-land) {
+    flex-basis: auto;
+    margin-bottom: 10rem;
+  }
+}
+
+.news__title {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.footer__site-dados,
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.squared {
+  padding: 1rem 4.5rem;
+  border-radius: 1rem;
+}
